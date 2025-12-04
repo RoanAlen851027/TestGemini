@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品推薦範例</title>
+    </head>
+<body>
+
+    <h1>歡迎來到產品推薦系統</h1>
+    
+    <button id="startGameButton">
+        🚀 Start Game (獲取推薦)
+    </button>
+    
+    <p id="recommendationResult"></p>
+
+    <script>
+        // 確保 DOM 載入完成後才執行程式碼
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 獲取按鈕元素
+            const button = document.getElementById('startGameButton');
+            const resultDisplay = document.getElementById('recommendationResult');
+
+            /**
+             * @description 事件處理函式：處理 Start Game 按鈕的點擊事件，並執行產品推薦邏輯。
+             */
+            function handleStartGameClick(event) {
+                console.log('按鈕被點擊了！開始執行產品推薦邏輯...');
+                
+                // 範例：模擬產品推薦資料
+                const recommendedProducts = [
+                    { id: 101, name: '極速電競滑鼠', price: 1299, category: '遊戲周邊' },
+                    { id: 203, name: '人體工學機械鍵盤', price: 2880, category: '辦公設備' },
+                    { id: 350, name: '超廣角曲面螢幕', price: 8990, category: '視聽設備' }
+                ];
+
+                // 隨機選一個產品作為推薦結果
+                const randomIndex = Math.floor(Math.random() * recommendedProducts.length);
+                const product = recommendedProducts[randomIndex];
+
+                // 格式化輸出結果
+                const recommendationMessage = `為您推薦：${product.name} (類別：${product.category}，價格：$${product.price})`;
+                
+                // 將結果顯示在網頁上
+                resultDisplay.textContent = recommendationMessage;
+                
+                console.log('推薦完成:', product);
+            }
+
+            // 將事件處理函式綁定到按鈕的 'click' 事件上
+            if (button) {
+                button.addEventListener('click', handleStartGameClick);
+            } else {
+                console.error('找不到 id 為 "startGameButton" 的按鈕元素。');
+            }
+        });
+    </script>
+    </body>
+</html>
